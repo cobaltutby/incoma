@@ -1,0 +1,26 @@
+{
+  "/auth/*": {
+    "target": "https://sdc-d-pipelinepilot.unilever.com/auth",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/auth": ""
+    }
+  },
+  "/protocols/*": {
+    "target": "https://sdc-d-pipelinepilot.unilever.com/protocols",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/protocols": ""
+    }
+  },
+  "/security/sessions/current*": {
+    "target": "https://sdc-d-pipelinepilot.unilever.com/security/sessions/current",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/security/sessions/current": ""
+    }
+  }
+}

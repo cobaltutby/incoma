@@ -1,0 +1,38 @@
+<div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+    GitHub's API rate limit has been reached. It will be reset in one minute.
+  </div>
+</div>
+
+<div>
+  <h2 class="example-sections">Github Angular issues</h2>
+</div>
+
+<div>
+  <mat-form-field class="example-sections">
+    <mat-label>Start typing to filter by title</mat-label>
+    <input matInput [formControl]="stateCtrl">
+  </mat-form-field>
+
+  <mat-checkbox [checked]="displayMode" (change)="switchDisplayMode()">Display only favorites</mat-checkbox>
+</div>
+
+<div class="rows">
+  <div class="row" *ngIf="filteredIssues.length">
+    <div class="example-column"></div>
+    <div class="example-column">Status</div>
+    <div class="example-column">id</div>
+    <div class="example-column">Title</div>
+  </div>
+  <div class="row" *ngFor="let row of filteredIssues; let rowIndex = index">
+    <div class="example-column">
+      <mat-icon (click)="switchFavorite(row)">{{row.favorite ? 'star' : 'star_border'}}
+      </mat-icon>
+    </div>
+    <div class="example-column">{{row.state}}</div>
+    <div class="example-column">{{row.number}}</div>
+    <div>{{row.title}}</div>
+  </div>
+</div>
+<button mat-raised-button (click)="loadMoreIssues()" class="buttons">Load more..</button>
